@@ -12,9 +12,12 @@ To test the class, go into unit_test.php and comment out/uncomment the code you 
 
 ## Issues
 No known issues.
+
+You can report the bugs at the [issue tracker](https://github.com/runninguru/Banner-Notifications-PHP-7)
+
 [:arrow_up:\[Back to Top\]](https://github.com/runninguru/Banner-Notifications-PHP-7)
 
-You can report the bugs at the [issue tracker](https://github.com/runninguru/MySQL-eCommerce/issues)
+
 
 ***
 
