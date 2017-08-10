@@ -3,7 +3,7 @@
 
 <p align="center">
 <a href="http://amarlearning.mit-license.org/"><img src="https://img.shields.io/pypi/l/pyzipcode-cli.svg" alt="mit license"></a>
-<img src="http://www.kylebirch.info/images/build_passing.svg">
+<img src="http://www.kylebirch.info/images/build_passing.png">
 </p>
 
 This class will display banner notifications in a typical manner: red, yellow, green, and blue for each error, warning, success, and info banners. All errors of a given type are appended to each other until they are displayed, and multiple tyeps of banners can be displayed simultaneously.
