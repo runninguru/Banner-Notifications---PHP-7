@@ -1,5 +1,5 @@
-<h1 align="center" id="urls">Banner Notifications - PHP 7</h1>
-<h4 align="center">a Notification.php class to easily create and display banner notifications in PHP 7/HTML/CSS</h4>
+<h1 align="center" id="urls">Notify - PHP 7</h1>
+<h4 align="center">a notify class to easily create and display banner notifications in PHP 7/HTML/CSS</h4>
 
 <p align="center">
 <a href="http://amarlearning.mit-license.org/"><img src="https://img.shields.io/pypi/l/pyzipcode-cli.svg" alt="mit license"></a>
