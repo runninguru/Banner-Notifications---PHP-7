@@ -20,6 +20,8 @@ You can report the bugs at the [issue tracker](https://github.com/runninguru/Ban
 ***
 
 ## License
+Kyle Birch([@runninguru](http://github.com/runninguru)) under [MIT License](https://choosealicense.com/licenses/mit/) 
+
 [:arrow_up:\[Back to Top\]](https://github.com/runninguru/Banner-Notifications-PHP-7)
 
-Kyle Birch([@runninguru](http://github.com/runninguru)) under [MIT License](https://choosealicense.com/licenses/mit/) 
+
