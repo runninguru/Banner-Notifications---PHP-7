@@ -8,8 +8,6 @@
 
 This class will display banner notifications in a typical manner: red, yellow, green, and blue for each error, warning, success, and info banners. All errors of a given type are appended to each other until they are displayed, and multiple tyeps of banners can be displayed simultaneously.
 
-To test the class, go into unit_test.php and comment out/uncomment the code you want to test.
-
 ## Issues
 No known issues.
 
