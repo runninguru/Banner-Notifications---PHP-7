@@ -1,9 +1,9 @@
 <?php
 /*
-Used to create banner notifications. 
+Used to create banner notifications.
 */
 class Notification {
- /* 
+ /*
  * Types of notifications:
  * ERROR        something went wrong, and you need to know.
  * SUCCESS      something went right, and I want you to know.
@@ -11,21 +11,16 @@ class Notification {
  * INFO         something happened, and I just feel like you might want to know.
  */
 	private $error, $success, $warning, $info = null;
-
-	private static $deafultError = 'Error: Something went wrong.';
-	private static $defaultWarning = 'warning: An issue arose, but we don\'t know what.';
-	private static $defaultInfo = 'info: Something happened, and we figure you should know.';
-	private static $defaultSuccess = 'success: something good happened.';
-
+	private $defaultError = 'Error: Something went wrong.';
+	private $defaultWarning = 'warning: An issue arose, but we don\'t know what.';
+	private $defaultInfo = 'info: Something happened, and we figure you should know.';
+	private $defaultSuccess = 'success: something good happened.';
 	public function __construct(){}
-
-	public function __construct(String $type, String $message){
-		$this->addNote($type, $message);
-	}
-
-/* 
+	// public function __construct(String $type, String $message){
+	// 	$this->addNote($type, $message);
+	// }
+/*
 add a single note. multiple notes of the same type will be appended to the same notification box, and will start on a new line. If you don't want to write a message, then just omit the message, and the default will be used.
-
 addNote('success', 'Success: You are now logged in.');
 addNote('success'); // will display a default message for the given type.
 */
@@ -37,70 +32,67 @@ addNote('success'); // will display a default message for the given type.
 				//provide a default type of message if there is none.
 				if(strlen($message) === 0){
 					if(isset($this->error)){
-						$this->error .= self::$deafultError . '\n';
+						$this->error .= $this->defaultError;
 					}
-					$this->error = self::$deafultError . '\n';
+					$this->error = $this->defaultError;
 				} else{
 					if(isset($this->error)){
-						$this->error .= $message . '\n';
+						$this->error .= $message;
 					}
-					$this->error = $message . '\n';
+					$this->error = $message;
 				}
 			break;
 			case 'warning':
 				//provide a default type of message if there is none.
 				if(strlen($message) === 0){
 					if(isset($this->warning)){
-						$this->warning .= self::$defaultWarning . '\n';
+						$this->warning .= $this->defaultWarning;
 					}
-					$this->warning = self::$defaultWarning . '\n';
+					$this->warning = $this->defaultWarning;
 				} else{
 					if(isset($this->warning)){
-						$this->warning .= $message . '\n';
+						$this->warning .= $message;
 					}
-					$this->warning = $message . '\n';
+					$this->warning = $message;
 				}
 			break;
 			case 'info':
 				//provide a default type of message if there is none.
 				if(strlen($message) === 0){
 					if(isset($this->info)){
-						$this->info .= self::$defaultInfo.'\n';
+						$this->info .= $this->defaultInfo;
 					}
-					$this->info = self::$defaultInfo.'\n';
+					$this->info = $this->defaultInfo;
 				} else{
 					if(isset($this->info)){
-						$this->info .= $message . '\n';
+						$this->info .= $message;
 					}
-					$this->info = $message . '\n';
+					$this->info = $message;
 				}
 			break;
 			case 'success':
 				//provide a default type of message if there is none.
 				if(strlen($message) === 0){
 					if(isset($this->success)){
-						$this->success .= self::$defaultSuccess . '\n';
+						$this->success .= $this->defaultSuccess;
 					}
-					$this->success = self::$defaultSuccess . '\n';
+					$this->success = $this->defaultSuccess;
 				} else{
 					if(isset($this->success)){
-						$this->success .= $message . '\n';
+						$this->success .= $message;
 					}
-					$this->success = $message . '\n';
+					$this->success = $message;
 				}
 			break;
 			default:
 				throw new Exception('Invalid notification type.');
 				//log the error using whatever means you so desire.
-				$this->error = 'ERROR: Something happened, and the notification type wasn\'t set correctly. Here is the message: ' . $message . '\n';
+				$this->error = 'ERROR: Something happened, and the notification type wasn\'t set correctly. Here is the message: ' . $message;
 		}
 	}
-
-
 /*
 use this in the same way as $this->addNote(), except multiple notes can be added via the splat operator.
 types and messages must appear in the same order as before. Also, if you don't want to use a message, don't omit the message. Use an empty string (a zero-length string) Example:
-
 addMultipleNotes('success','You are logged in.','warning','you must reset your password');
 addMultipleNotes('success', '', 'warning', '')
 */
@@ -110,65 +102,63 @@ addMultipleNotes('success', '', 'warning', '')
 				case 'error':
 				if(strlen($message) === 0){
 					if(isset($this->error)){
-						$this->error .= self::$deafultError . '\n';
+						$this->error .= $this->defaultError;
 					}
-					$this->error = self::$deafultError . '\n';
+					$this->error = $this->defaultError;
 				} else{	//if a message was provided.
 					if(isset($this->error)){
-						$this->error .= $args[$i + 1] . '\n';
+						$this->error .= $args[$i + 1];
 					}
-					$this->error = $args[$i + 1] . '\n';
+					$this->error = $args[$i + 1];
 				}
 				break;
 				case 'warning':
-
 					if(strlen($message) === 0){
 					if(isset($this->warning)){
-						$this->warning .= self::$defaultWarning . '\n';
+						$this->warning .= $this->defaultWarning;
 					}
-					$this->warning = self::$defaultWarning . '\n';
+					$this->warning = $this->defaultWarning;
 					} else{	//if a message was provided.
 						if(isset($this->warning)){
-						$this->warning .= $args[$i + 1] . '\n';
+						$this->warning .= $args[$i + 1];
 						}
-						$this->warning = $args[$i + 1] . '\n';
+						$this->warning = $args[$i + 1];
 					}
 				break;
 				case 'info':
 					if(strlen($message) === 0){
 					if(isset($this->info)){
-						$this->info .= self::$defaultInfo . '\n';
+						$this->info .= $this->defaultInfo;
 					}
-					$this->info = self::$defaultInfo . '\n';
+					$this->info = $this->defaultInfo;
 				} else{	//if a message was provided.
 					if(isset($this->info)){
-						$this->info .= $args[$i + 1] . '\n';
+						$this->info .= $args[$i + 1];
 					}
-					$this->info = $args[$i + 1] . '\n';
+					$this->info = $args[$i + 1];
 				}
 				break;
 				case 'success':
-					
+
 					if(strlen($message) === 0){
 					if(isset($this->success)){
-						$this->success .= self::$defaultSuccess . '\n';
+						$this->success .= $this->defaultSuccess;
 					}
-					$this->success = self::$defaultSuccess . '\n';
+					$this->success = $this->defaultSuccess;
 					} else{ //if a message was provided.
 					if(isset($this->success)){
-						$this->success .= $args[$i + 1] . '\n';
+						$this->success .= $args[$i + 1];
 					}
-					$this->success = $args[$i + 1] . '\n';
+					$this->success = $args[$i + 1];
 					}
 				break;
 				default:
 					throw new Exception('Invalid notification type.');
 				//log the error using whatever means you so desire.
-				$this->error = 'ERROR: Something happened, and the notification type wasn\'t set correctly. Here is the message: ' . $args[$i + 1] . '\n';
+				$this->error = 'ERROR: Something happened, and the notification type wasn\'t set correctly. Here is the message: ' . $args[$i + 1];
 			}
 		}
 	}
-
 	//use this anytime you want to display any notes that MAY have come up.
 	public function notify(){
 		if (isset($this->error)) {
@@ -202,36 +192,28 @@ addMultipleNotes('success', '', 'warning', '')
 			echo '</div>';
 		}
 	}
-
-	public static getDefaultError(){
-		return self::$deafultError;
+	public function getDefaultError(){
+		return $this->defaultError;
 	}
-
-	public static getDefaultWarning(){
-		return self::$defaultWarning;
+	public function getDefaultWarning(){
+		return $this->defaultWarning;
 	}
-
-	public static getDefaultInfo(){
-		return self::$defaultInfo;
+	public function getDefaultInfo(){
+		return $this->defaultInfo;
 	}
-
-	public static getDefaultSuccess(){
-		return self::$defaultSuccess;
+	public function getDefaultSuccess(){
+		return $this->defaultSuccess;
 	}
-
-	public static void setDefaultError(String $message){
-		self::defaultError = $message;
+	public function setDefaultError(String $message): void{
+		$this->defaultError = $message;
 	}
-
-	public static void setDefaultWarning(String $message){
-		self::defaultWarning = $message;
+	public function setDefaultWarning(String $message): void{
+		$this->defaultWarning = $message;
 	}
-
-	public static void setDefaultInfo(String $message){
-		self::defaultInfo = $message;
+	public function setDefaultInfo(String $message): void{
+		$this->defaultInfo = $message;
 	}
-
-	public static void setDefaultSuccess(String $message){
-		self::defaultSuccess = $message;
+	public function setDefaultSuccess(String $message): void{
+		$this->defaultSuccess = $message;
 	}
 }
