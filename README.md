@@ -14,6 +14,7 @@ This class will display banner notifications in a typical manner: red, yellow, g
 <p>$note->addNote('error', 'Incorrect Password');</p>
 <h4>create a note with a generic message.</h4>
 <p>$note->addNote('error');
+  
 ## Issues
 No known issues.
 
