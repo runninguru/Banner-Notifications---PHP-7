@@ -9,11 +9,14 @@
 This class will display banner notifications in a typical manner: red, yellow, green, and blue for each error, warning, success, and info banners. All errors of a given type are appended to each other until they are displayed, and multiple types of banners can be displayed simultaneously.
 
 ## How it works
-<p>$note = new Notification();</p>
+<p>It's pretty simple</p>
 <h4>create a note</h4>
+<p>$note = new Notification();</p>
 <p>$note->addNote('error', 'Incorrect Password');</p>
 <h4>create a note with a generic message.</h4>
-<p>$note->addNote('error');
+<p>$note->addNote('error');</p>
+<h4>display notes</h4>
+<p>$note->notify();</p>
   
 ## Issues
 No known issues.
