@@ -16,6 +16,7 @@ This class will display banner notifications in a typical manner: red, yellow, g
 <h4>create a note with a generic message.</h4>
 <p>$note->addNote('error');</p>
 <h4>display notes</h4>
+<p>This will also unset the object's properties, deleting the notes after they have been displayed.</p>
 <p>$note->notify();</p>
   
 ## Issues
