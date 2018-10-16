@@ -26,20 +26,23 @@ addNote('success'); // will display a default message for the given type.
 */
 	public function addNote(String $type,String $message = ''){
 		$type = trim(strtolower($type));
-		$message = trim(strtolower($type));
+		$message = trim(strtolower($message));
+		$message .= ' ';
 		switch($type){
 			case 'error':
 				//provide a default type of message if there is none.
 				if(strlen($message) === 0){
 					if(isset($this->error)){
 						$this->error .= $this->defaultError;
+					}else{
+						$this->error = $this->defaultError;
 					}
-					$this->error = $this->defaultError;
 				} else{
 					if(isset($this->error)){
 						$this->error .= $message;
+					}else {
+						$this->error = $message;
 					}
-					$this->error = $message;
 				}
 			break;
 			case 'warning':
@@ -47,13 +50,15 @@ addNote('success'); // will display a default message for the given type.
 				if(strlen($message) === 0){
 					if(isset($this->warning)){
 						$this->warning .= $this->defaultWarning;
+					}else {
+						$this->warning = $this->defaultWarning;
 					}
-					$this->warning = $this->defaultWarning;
 				} else{
 					if(isset($this->warning)){
 						$this->warning .= $message;
+					}else {
+						$this->warning = $message;
 					}
-					$this->warning = $message;
 				}
 			break;
 			case 'info':
@@ -61,13 +66,15 @@ addNote('success'); // will display a default message for the given type.
 				if(strlen($message) === 0){
 					if(isset($this->info)){
 						$this->info .= $this->defaultInfo;
+					}else {
+						$this->info = $this->defaultInfo;
 					}
-					$this->info = $this->defaultInfo;
 				} else{
 					if(isset($this->info)){
 						$this->info .= $message;
+					}else {
+						$this->info = $message;
 					}
-					$this->info = $message;
 				}
 			break;
 			case 'success':
@@ -75,13 +82,15 @@ addNote('success'); // will display a default message for the given type.
 				if(strlen($message) === 0){
 					if(isset($this->success)){
 						$this->success .= $this->defaultSuccess;
+					}else {
+						$this->success = $this->defaultSuccess;
 					}
-					$this->success = $this->defaultSuccess;
 				} else{
 					if(isset($this->success)){
 						$this->success .= $message;
+					}else {
+						$this->success = $message;
 					}
-					$this->success = $message;
 				}
 			break;
 			default:
@@ -100,62 +109,68 @@ addMultipleNotes('success', '', 'warning', '')
 		for($i = 0; $i < count($args);$i += 2){
 			switch($value){
 				case 'error':
-				if(strlen($message) === 0){
-					if(isset($this->error)){
-						$this->error .= $this->defaultError;
+					if(strlen($message) === 0){
+						if(isset($this->error)){
+							$this->error .= $this->defaultError;
+						}else {
+							$this->error = $this->defaultError;
+						}
+					} else{	//if a message was provided.
+						if(isset($this->error)){
+							$this->error .= $args[$i + 1];
+						}else {
+							$this->error = $args[$i + 1];
+						}
 					}
-					$this->error = $this->defaultError;
-				} else{	//if a message was provided.
-					if(isset($this->error)){
-						$this->error .= $args[$i + 1];
-					}
-					$this->error = $args[$i + 1];
-				}
 				break;
 				case 'warning':
 					if(strlen($message) === 0){
-					if(isset($this->warning)){
-						$this->warning .= $this->defaultWarning;
-					}
-					$this->warning = $this->defaultWarning;
+						if(isset($this->warning)){
+							$this->warning .= $this->defaultWarning;
+						}else {
+							$this->warning = $this->defaultWarning;
+						}
 					} else{	//if a message was provided.
 						if(isset($this->warning)){
 						$this->warning .= $args[$i + 1];
+						}else {
+							$this->warning = $args[$i + 1];
 						}
-						$this->warning = $args[$i + 1];
 					}
 				break;
 				case 'info':
 					if(strlen($message) === 0){
-					if(isset($this->info)){
-						$this->info .= $this->defaultInfo;
+						if(isset($this->info)){
+							$this->info .= $this->defaultInfo;
+						}else {
+							$this->info = $this->defaultInfo;
+						}
+					} else{	//if a message was provided.
+						if(isset($this->info)){
+							$this->info .= $args[$i + 1];
+						}else {
+							$this->info = $args[$i + 1];
+						}
 					}
-					$this->info = $this->defaultInfo;
-				} else{	//if a message was provided.
-					if(isset($this->info)){
-						$this->info .= $args[$i + 1];
-					}
-					$this->info = $args[$i + 1];
-				}
 				break;
 				case 'success':
-
 					if(strlen($message) === 0){
-					if(isset($this->success)){
-						$this->success .= $this->defaultSuccess;
-					}
-					$this->success = $this->defaultSuccess;
+						if(isset($this->success)){
+							$this->success .= $this->defaultSuccess;
+						}
+						$this->success = $this->defaultSuccess;
 					} else{ //if a message was provided.
-					if(isset($this->success)){
-						$this->success .= $args[$i + 1];
-					}
-					$this->success = $args[$i + 1];
+						if(isset($this->success)){
+							$this->success .= $args[$i + 1];
+						}else {
+							$this->success = $args[$i + 1];
+						}
 					}
 				break;
 				default:
 					throw new Exception('Invalid notification type.');
-				//log the error using whatever means you so desire.
-				$this->error = 'ERROR: Something happened, and the notification type wasn\'t set correctly. Here is the message: ' . $args[$i + 1];
+					//log the error using whatever means you so desire.
+					$this->error = 'ERROR: Something happened, and the notification type wasn\'t set correctly. Here is the message: ' . $args[$i + 1];
 			}
 		}
 	}
@@ -192,6 +207,8 @@ addMultipleNotes('success', '', 'warning', '')
 			echo '</div>';
 		}
 	}
+
+
 	public function getDefaultError(){
 		return $this->defaultError;
 	}
